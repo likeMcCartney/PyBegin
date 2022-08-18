@@ -110,3 +110,16 @@ print(L)
 print(L.pop())      # Pop out of the stack
 print(L)
 
+L = ['SPAM', 'eat', 'more', 'please']
+print(L)
+del L[0]
+print(L)
+del L[1:]
+print(L)
+
+L = ['Already', 'got', 'one']
+print(L)
+L[1:] = []
+print(L)
+L[0] = []
+print(L)
