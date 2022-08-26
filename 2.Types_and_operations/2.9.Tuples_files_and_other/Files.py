@@ -52,3 +52,41 @@ F.close()
 F = open('datafile.txt', 'rb')
 E = pickle.load(F)
 print(E)
+
+print('=' * 80)
+# ===========================================================================================================
+# JSON
+name = dict(first = 'Bob', last = 'Smith')
+rec = dict(name = name, job = ['dev', 'mgr'], age = 40.5)
+print(rec)
+
+import json
+print(json.dumps(rec))
+S = json.dumps(rec)
+print(S)
+O = json.loads(S)
+print(O)
+print(O == rec)
+
+json.dump(rec, fp = open('testjson.txt', 'w'), indent=4)
+print(open('testjson.txt').read())
+
+P = json.load(open('testjson.txt'))
+print(P)
+
+print('=' * 80)
+# ===========================================================================================================
+# Binary data packing, struct module
+
+F = open('data.bin', 'wb')                  # Open binary output file
+import struct
+data = struct.pack('>i4sh', 7, b'spam', 8)   # Create packed binary data
+print(data)
+F.write(data)
+F.close()
+
+F = open('data.bin', 'rb')
+data = F.read()
+print(data)
+values = struct.unpack('>i4sh', data)
+print(values)
